@@ -125,6 +125,18 @@ def extract_data(file_path):
         except:
             image = 'NA'
 
+        # Get the description 
+        description = None
+
+        # Get the description 
+        description_container = recipe_container.find('div', class_='wprm-recipe-summary')
+
+        if description_container:
+            description_span = description_container.find('span')
+            if description_span:
+                description = description_span.text
+
+
         # Append the data to the list
         data.append(
             [
@@ -135,13 +147,14 @@ def extract_data(file_path):
                 image if image else 'NA',
                 ingredients if ingredients else 'NA',
                 instructions if instructions else 'NA',
+                description if description else 'NA'
             ]
         )
 
     return data
 
 def save_to_csv(key, data):
-    headers = ["Title", "Prep Time", "Cook Time", "Servings", "Image", "Ingredients", "Instructions",]
+    headers = ["Title", "Prep Time", "Cook Time", "Servings", "Image", "Ingredients", "Instructions", "Description"]
     with open(f'scraped/raw_data/{key}_recipes.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(headers)
