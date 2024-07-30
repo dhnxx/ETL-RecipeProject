@@ -14,6 +14,10 @@ Limitations of the current design include:
 - No support for filtering recipes based on dietary restrictions, cuisine types, or advanced search functionalities that may enhance user experience.
 
 ## Entities
+
+![Diagram](diagram.png)
+
+
 The main entities in the database are:
 - **Recipes**: This table consists of attributes:
   - `id`: INTEGER (Primary Key)

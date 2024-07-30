@@ -3,6 +3,8 @@
 ## Overview
 ETL-RecipeProject is a comprehensive ETL (Extract, Transform, Load) project developed for CS50P and CS50SQL. This project focuses on scraping recipes from the Panlasang Pinoy website, cleaning and transforming the data, and then loading it into a SQL database. The Python app is designed to extract recipe information, transform it into a structured format, and load it into a SQLite database for further use.
 
+![Diagram](diagram.png)
+
 ## Features
 - **Data Scraping**: Extracts recipes and ingredient information from the Panlasang Pinoy website.
 - **Data Transformation**: Cleans and normalizes the data, including handling duplicate ingredients.
