@@ -10,6 +10,7 @@ ETL-RecipeProject is a comprehensive ETL (Extract, Transform, Load) project deve
 - **Data Transformation**: Cleans and normalizes the data, including handling duplicate ingredients.
 - **Data Loading**: Inserts the transformed data into a structured SQLite database.
 - **Schema Management**: Automatically runs the schema script to create and update the database schema.
+#### Video Demo:  <https://youtu.be/sca_IBNjdus>
 
 ## Installation and Setup
 ### Prerequisites
@@ -22,15 +23,19 @@ ETL-RecipeProject is a comprehensive ETL (Extract, Transform, Load) project deve
   - `bs4`
   - `os`
   - `requests`
+  - `pyfiglet`
 
 ### Installation Steps
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/ETL-RecipeProject.git
    cd ETL-RecipeProject
+2. Run the application:
+   ```bash
+   python project.py
 
 ### Install the required libraries:
- - pip install beautifulsoup4 requests
+ - pip install beautifulsoup4 requests pyfiglet
 
 ### Running the App
 To run the Python app and start the ETL process, execute the following command:
