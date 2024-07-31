@@ -25,18 +25,18 @@ CATEGORIES = {
 }
 
 def main():
-    execute()
+    scrape_and_save_recipes()
     
-def execute():
+def scrape_and_save_recipes():
     scraped_dir = 'scraped/raw_links'
     os.makedirs(scraped_dir, exist_ok=True)
 
     for key, value in CATEGORIES.items():
         result = scrape_recipes(value)
         save_to_csv(scraped_dir, key, result)
-        print(f"{key.title()} recipes complete.")
+        #print(f"{key.title()} recipes complete.")
 
-    print("Scraping complete.")
+    #print("Link Scraping complete.")
 
 def scrape_recipes(url_suffix):
 

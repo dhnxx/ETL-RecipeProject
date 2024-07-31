@@ -1,2 +1,4 @@
 # Ignore the scraped folder
 scraped/
+
+__pycache__/

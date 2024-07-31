@@ -17,6 +17,7 @@ Limitations of the current design include:
 
 ![Diagram](diagram.png)
 
+#### Video Demo:  <https://youtu.be/sca_IBNjdus>
 
 The main entities in the database are:
 - **Recipes**: This table consists of attributes:

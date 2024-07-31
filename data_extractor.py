@@ -26,36 +26,35 @@ CATEGORIES = {
 BUZZ = ["how to cook", "how to make", "recipe", "easy to cook", "easy", "panlasang pinoy", "crispy", "killer", "version"]
 
 def main():
-    value = checker()
-    if not value:
+    if not check_data_availability():
         print("Data not complete. Please run link-scraper.py first.")
         return
 
     print("Data complete. Proceeding to data extraction.")
-    execute()
+    extract_and_save_data()
 
-def checker():
+def check_data_availability():
     if not os.path.exists("scraped/raw_links"):
         return False
     
-    for key, value in CATEGORIES.items():
+    for key in CATEGORIES:
         if not os.path.exists(f"scraped/raw_links/{key}_recipes.csv"):
             return False
         
     return True
 
-def execute():
+def extract_and_save_data():
     scraped_dir = 'scraped/raw_data'
     os.makedirs(scraped_dir, exist_ok=True)
 
-    for key, value in CATEGORIES.items():
-        data = extract_data(f"scraped/raw_links/{key}_recipes.csv")
-        print(f"Finished extracting {key} recipes.")
-        save_to_csv(key, data)
+    for key in CATEGORIES:
+        data = extract_recipe_data(f"scraped/raw_links/{key}_recipes.csv")
+        # print(f"Finished extracting {key} recipes.")
+        save_data_to_csv(key, data)
     
-    print("Data extraction complete.")
+    # print("Data extraction complete.")
 
-def extract_data(file_path):
+def extract_recipe_data(file_path):
     links = []
     data = []
 
@@ -127,15 +126,11 @@ def extract_data(file_path):
 
         # Get the description 
         description = None
-
-        # Get the description 
         description_container = recipe_container.find('div', class_='wprm-recipe-summary')
-
         if description_container:
             description_span = description_container.find('span')
             if description_span:
                 description = description_span.text
-
 
         # Append the data to the list
         data.append(
@@ -153,13 +148,12 @@ def extract_data(file_path):
 
     return data
 
-def save_to_csv(key, data):
+def save_data_to_csv(key, data):
     headers = ["Title", "Prep Time", "Cook Time", "Servings", "Image", "Ingredients", "Instructions", "Description"]
     with open(f'scraped/raw_data/{key}_recipes.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(headers)
         writer.writerows(data)
-
 
 if __name__ == "__main__":
     main()
